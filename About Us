@@ -1,1 +1,90 @@
+<?php include 'templates/header.php'; ?>
 
+<main class="about-page">
+
+    <!-- About Section -->
+    <section class="about-main">
+
+        <div class="about-image">
+            <img src="images/college.jpeg" alt="Vision College Learning Centre">
+        </div>
+
+        <div class="about-content">
+
+            <h1>About Us</h1>
+
+            <div class="about-line"></div>
+
+            <p>
+                Vision College Learning Centre is dedicated to
+                providing high quality language education for
+                students and adults.
+            </p>
+
+            <p>
+                We offer English classes for high school students
+                (years 9-13) and Chinese classes for adults (16+).
+            </p>
+
+            <p>
+                Our programmes are designed to help learners
+                improve their language skills, build confidence
+                and achieve their goals.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="about-features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🎓
+            </div>
+
+            <h3>Experienced<br>Teachers</h3>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ♡
+            </div>
+
+            <h3>Supportive<br>Environment</h3>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🎓
+            </div>
+
+            <h3>Quality<br>Programs</h3>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                👥
+            </div>
+
+            <h3>Proven<br>Results</h3>
+
+        </div>
+
+    </section>
+
+</main>
+
+<?php include 'templates/footer.php'; ?>
