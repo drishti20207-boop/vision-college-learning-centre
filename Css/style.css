@@ -1,0 +1,499 @@
+/* ==========================================================================
+   Vision College Learning Centre - main stylesheet
+   Written by hand on top of Bootstrap 5 (Bootstrap handles the grid/layout,
+   this file just adds our own brand colours, fonts and small tweaks).
+   ========================================================================== */
+
+/* -------------------- Brand colours (from the Figma file) -------------------- */
+:root {
+  --clr-navy: #136194;         /* main brand blue - buttons, links, headings */
+  --clr-navy-dark: #0e4c73;    /* a bit darker, used for hover states */
+  --clr-light-blue: #dce7ff;   /* pale blue used on hero + chinese card */
+  --clr-light-gray: #f5f5f5;   /* light grey used behind english card */
+  --clr-text: #222222;         /* body paragraph text (near black, easier on the eyes than pure black) */
+  --clr-white: #ffffff;
+
+  --font-main: "Montserrat", "Segoe UI", Arial, sans-serif;
+}
+
+/* -------------------- General page setup -------------------- */
+body {
+  font-family: var(--font-main);
+  color: var(--clr-text);
+  /* smooth scrolling makes anchor links (like "Explore Courses") feel nicer */
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, .fw-brand {
+  font-family: var(--font-main);
+  font-weight: 700;
+  color: #000000;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* quick helper class for whenever we need navy-coloured text outside of the
+   usual headings (saves us writing inline styles in the HTML) */
+.text-navy {
+  color: var(--clr-navy) !important;
+}
+
+/* Small section heading with the little underline bar under it, used a lot
+   across the site (Our Programmes, About Us, Our Courses, Contact Us...) */
+.section-heading {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.section-heading-underline {
+  width: 70px;
+  height: 4px;
+  background-color: var(--clr-navy);
+  border: none;
+  border-radius: 2px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.section-heading-underline.align-start {
+  margin-left: 0;
+}
+
+/* -------------------- Buttons -------------------- */
+/* We mostly reuse Bootstrap's btn classes but recolour them to match
+   the navy brand colour instead of Bootstrap's default blue. */
+.btn-brand {
+  background-color: var(--clr-navy);
+  border-color: var(--clr-navy);
+  color: var(--clr-white);
+  font-weight: 600;
+  padding: 0.65rem 1.75rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+  background-color: var(--clr-navy-dark);
+  border-color: var(--clr-navy-dark);
+  color: var(--clr-white);
+  transform: translateY(-2px);
+}
+
+.btn-brand-outline {
+  background-color: transparent;
+  border: 2px solid var(--clr-navy);
+  color: var(--clr-navy);
+  font-weight: 600;
+  padding: 0.6rem 1.75rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-brand-outline:hover,
+.btn-brand-outline:focus {
+  background-color: var(--clr-navy);
+  color: var(--clr-white);
+  transform: translateY(-2px);
+}
+
+/* every clickable button/link gets a visible focus ring for keyboard users
+   (accessibility - people tabbing through the site with a keyboard need to
+   be able to see where they are) */
+.btn-brand:focus-visible,
+.btn-brand-outline:focus-visible,
+.nav-link:focus-visible,
+a:focus-visible {
+  outline: 3px solid #ffb703;
+  outline-offset: 2px;
+}
+
+/* -------------------- Navbar -------------------- */
+.navbar-vision {
+  background-color: var(--clr-white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.navbar-vision .navbar-brand img {
+  height: 42px;
+}
+
+.navbar-vision .nav-link {
+  color: var(--clr-navy);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  position: relative;
+}
+
+/* the current page link gets a little underline so people know where
+   they are on the site (this is basically the "you are here" HCI rule) */
+.navbar-vision .nav-link.active {
+  color: #000000;
+}
+
+.navbar-vision .nav-link.active::after {
+  content: "";
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--clr-navy);
+  margin-top: 3px;
+}
+
+.navbar-vision .btn-brand {
+  padding: 0.5rem 1.4rem;
+  font-size: 0.95rem;
+}
+
+/* -------------------- Hero section (home page) -------------------- */
+.hero-section {
+  background-color: var(--clr-light-blue);
+  border-radius: 0 0 40px 40px;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+.hero-section h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.hero-section .hero-subtitle {
+  color: var(--clr-navy);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+/* -------------------- Page header (About Us / Our Courses / Contact Us titles) -------------------- */
+.page-header {
+  position: relative;
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--clr-navy);
+}
+
+.page-header .flower-deco {
+  position: absolute;
+  top: 10px;
+  width: 90px;
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.page-header .flower-deco.left {
+  left: -20px;
+}
+
+.page-header .flower-deco.right {
+  right: -20px;
+}
+
+/* -------------------- Programme / course cards -------------------- */
+.programme-card {
+  border-radius: 20px;
+  padding: 2.2rem;
+  height: 100%;
+}
+
+.programme-card.card-gray {
+  background-color: var(--clr-light-gray);
+}
+
+.programme-card.card-blue {
+  background-color: var(--clr-light-blue);
+}
+
+.programme-card .icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.programme-card.card-gray .icon-circle {
+  background-color: var(--clr-light-blue);
+}
+
+.programme-card.card-blue .icon-circle {
+  background-color: var(--clr-navy);
+}
+
+.programme-card .icon-circle img {
+  width: 32px;
+  height: 32px;
+}
+
+.programme-card h3 {
+  color: var(--clr-navy);
+  font-size: 1.6rem;
+  margin-bottom: 0.15rem;
+}
+
+.programme-card .badge-age {
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* gentle hover lift so cards feel clickable/interactive */
+.programme-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.programme-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(19, 97, 148, 0.12);
+}
+
+/* -------------------- About page -------------------- */
+.about-photo {
+  border-radius: 16px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.why-us-item {
+  text-align: center;
+  padding: 1rem;
+}
+
+.why-us-item img {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1rem;
+}
+
+.why-us-item h4 {
+  font-size: 1.15rem;
+}
+
+/* -------------------- Course detail pages (English / Chinese) -------------------- */
+.course-detail-card {
+  border-radius: 20px;
+  padding: 2.5rem;
+}
+
+.course-detail-card.bg-gray {
+  background-color: var(--clr-light-gray);
+}
+
+.course-detail-card.bg-blue {
+  background-color: var(--clr-light-blue);
+}
+
+.course-detail-card img.student-photo {
+  border-radius: 16px;
+  width: 100%;
+  height: auto;
+}
+
+.course-detail-card ul {
+  padding-left: 1.2rem;
+}
+
+.course-detail-card ul li {
+  margin-bottom: 0.35rem;
+}
+
+/* -------------------- Contact page -------------------- */
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.contact-info-item i {
+  color: var(--clr-navy);
+  font-size: 1.4rem;
+  margin-top: 0.15rem;
+}
+
+.contact-form-wrapper {
+  background-color: var(--clr-light-blue);
+  border-radius: 20px;
+  padding: 2.2rem;
+}
+
+.contact-form-wrapper .form-control {
+  border: none;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.contact-form-wrapper .form-control:focus {
+  box-shadow: 0 0 0 3px rgba(19, 97, 148, 0.35);
+}
+
+/* small red helper text that shows up under a field when validation fails */
+.field-error {
+  color: #c62828;
+  font-size: 0.85rem;
+  margin-top: -0.9rem;
+  margin-bottom: 0.9rem;
+  display: none;
+}
+
+/* -------------------- Footer -------------------- */
+.footer-vision {
+  background-color: var(--clr-navy);
+  color: var(--clr-white);
+  position: relative;
+  overflow: hidden;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  margin-top: 4rem;
+}
+
+/* logo pinned to the top-left corner of the footer, with a small margin */
+.footer-vision .footer-logo {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+}
+
+.footer-vision .footer-logo img {
+  height: 100px;
+}
+
+.footer-vision h2 {
+  color: var(--clr-white);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+.footer-vision .footer-contact-line {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.footer-vision .footer-contact-line a {
+  color: var(--clr-white);
+}
+
+.footer-vision .footer-contact-line a:hover {
+  text-decoration: underline;
+}
+
+.footer-vision hr {
+  border-color: rgba(255, 255, 255, 0.25);
+  margin: 2rem 0 1rem 0;
+}
+
+.footer-vision .copyright {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.footer-vision .flower-deco {
+  position: absolute;
+  bottom: -100px;
+  width: 240px;
+  opacity: 0.85;
+  z-index: 0;
+}
+
+.footer-vision .flower-deco.left {
+  left: -60px;
+}
+
+.footer-vision .flower-deco.right {
+  right: -150px;
+  top: 25px;
+}
+
+.footer-vision .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* -------------------- Back to top button -------------------- */
+#backToTopBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 999;
+  display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--clr-navy);
+  color: var(--clr-white);
+  border: none;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+#backToTopBtn:hover {
+  background-color: var(--clr-navy-dark);
+}
+
+/* -------------------- Simple fade-in animation on page load -------------------- */
+/* keeps things simple - no scroll-listener needed, elements just fade/slide
+   up a little the moment the page finishes loading */
+.fade-in-up {
+  animation: fadeInUp 0.7s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.25s; }
+
+/* -------------------- Small screen tweaks (phones) -------------------- */
+@media (max-width: 767.98px) {
+  .hero-section {
+    border-radius: 0 0 24px 24px;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .page-header .flower-deco {
+    width: 55px;
+  }
+
+  .footer-vision .flower-deco {
+    width: 90px;
+  }
+
+
+  .course-detail-card {
+    padding: 1.5rem;
+  }
+
+  .programme-card {
+    padding: 1.6rem;
+  }
+}
+
+/* stop the decorative flowers from ever causing a horizontal scrollbar */
+body {
+  overflow-x: hidden;
+}
